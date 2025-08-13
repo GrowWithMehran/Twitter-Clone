@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A modern Twitter clone interface">
+  <title>Twitter Clone | Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <nav class="header-nav">
+      <a href="#" class="nav-link active" aria-current="page">
+        <i class="fas fa-home"></i>
+        <span class="nav-text">Home</span>
+      </a>
+      <button class="trending-btn" onclick="toggleTrending()" aria-expanded="false" aria-controls="trendingSection">
+        <i class="fas fa-hashtag"></i>
+        <span class="btn-text">Trending</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <!-- Trending Section -->
+    <aside class="trending-section" id="trendingSection" hidden>
+      <h2 class="trending-header">What's happening</h2>
+      <article class="trending-item">
+        <div class="trending-meta">
+          <span class="trending-category">Technology · Trending</span>
+          <button class="trending-more" aria-label="More options">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+        </div>
+        <h3 class="trending-name">#AI</h3>
+        <p class="trending-tweets">1.2M posts</p>
+      </article>
+      <article class="trending-item">
+        <div class="trending-meta">
+          <span class="trending-category">Sports · Trending</span>
+          <button class="trending-more" aria-label="More options">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+        </div>
+        <h3 class="trending-name">#WorldCup</h3>
+        <p class="trending-tweets">892K posts</p>
+      </article>
+      <button class="show-more">Show more</button>
+    </aside>
+
+    <!-- Tweet Composition -->
+    <section class="tweet-composer">
+      <form class="tweet-form">
+        <div class="tweet-input">
+          <img src="https://picsum.photos/200" alt="User avatar" class="user-avatar">
+          <textarea placeholder="What's happening?" maxlength="280" aria-label="Compose tweet"></textarea>
+        </div>
+        <div class="tweet-actions">
+          <div class="action-buttons">
+            <button type="button" class="action-btn" aria-label="Add media">
+              <i class="fas fa-image"></i>
+            </button>
+            <button type="button" class="action-btn" aria-label="Add GIF">
+              <i class="fas fa-film"></i>
+            </button>
+            <button type="button" class="action-btn" aria-label="Add poll">
+              <i class="fas fa-chart-pie"></i>
+            </button>
+            <button type="button" class="action-btn" aria-label="Add location">
+              <i class="fas fa-map-marker-alt"></i>
+            </button>
+          </div>
+          <button type="submit" class="tweet-submit">Tweet</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Tweets Feed -->
+    <section class="tweets-feed">
+      <article class="tweet">
+        <div class="tweet-avatar">
+          <img src="https://picsum.photos/200" alt="Elon Musk's avatar">
+        </div>
+        <div class="tweet-content">
+          <header class="tweet-header">
+            <h3 class="tweet-user">
+              <span class="user-name">Elon Musk</span>
+              <span class="user-handle">@elonmusk · 2h</span>
+            </h3>
+            <button class="tweet-more" aria-label="More options">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+          </header>
+          <p class="tweet-text">Humanity will reach Mars in your lifetime</p>
+          <footer class="tweet-actions">
+            <button class="action-btn" aria-label="Reply">
+              <i class="far fa-comment"></i>
+              <span>452</span>
+            </button>
+            <button class="action-btn" aria-label="Retweet">
+              <i class="fas fa-retweet"></i>
+              <span>3.2K</span>
+            </button>
+            <button class="action-btn" aria-label="Like">
+              <i class="far fa-heart"></i>
+              <span>24.5K</span>
+            </button>
+            <button class="action-btn" aria-label="Share">
+              <i class="fas fa-share"></i>
+            </button>
+          </footer>
+        </div>
+      </article>
+
+      <article class="tweet">
+        <div class="tweet-avatar">
+          <img src="https://picsum.photos/200" alt="MrBeast's avatar">
+        </div>
+        <div class="tweet-content">
+          <header class="tweet-header">
+            <h3 class="tweet-user">
+              <span class="user-name">MrBeast</span>
+              <span class="user-handle">@MrBeast · 5h</span>
+            </h3>
+            <button class="tweet-more" aria-label="More options">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+          </header>
+          <p class="tweet-text">New video tomorrow at 3pm EST!</p>
+          <footer class="tweet-actions">
+            <button class="action-btn" aria-label="Reply">
+              <i class="far fa-comment"></i>
+              <span>12.4K</span>
+            </button>
+            <button class="action-btn" aria-label="Retweet">
+              <i class="fas fa-retweet"></i>
+              <span>8.7K</span>
+            </button>
+            <button class="action-btn" aria-label="Like">
+              <i class="far fa-heart"></i>
+              <span>142K</span>
+            </button>
+            <button class="action-btn" aria-label="Share">
+              <i class="fas fa-share"></i>
+            </button>
+          </footer>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    function toggleTrending() {
+      const trendingSection = document.getElementById('trendingSection');
+      const isHidden = trendingSection.hidden;
+      
+      trendingSection.hidden = !isHidden;
+      const btn = document.querySelector('.trending-btn');
+      
+      if (isHidden) {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.style.color = '#1d9bf0';
+      } else {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.style.color = '#0f1419';
+      }
+    }
+  </script>
+</body>
+</html>
